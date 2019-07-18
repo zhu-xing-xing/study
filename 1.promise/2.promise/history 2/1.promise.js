@@ -2,7 +2,7 @@ let Promise = require('./promise');
 let fs = require('fs');
 let p = new Promise((resolve,reject)=>{ 
     // 读取文件成功后 调用成功 
-    throw new Error('出错了');
+    // throw new Error('出错了');
     fs.readFile('./name.txt','utf8',function(err,data){
         if(err){
             return reject(err); 

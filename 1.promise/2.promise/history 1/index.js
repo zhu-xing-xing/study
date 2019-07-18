@@ -14,9 +14,9 @@
 
 let Promise = require('./promise')
 
-let p = new Promise((resolve, reject) => {
-  // resolve('increment')
-  reject('decrement')
+let p = new Promise((a, b) => {
+  console.log('a', a)
+  console.log('b', b)
 })
 
 p.then(

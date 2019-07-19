@@ -5,21 +5,20 @@
 // 1.var 声明的变量 声明到全局 污染全局变量 （函数作用域 全局）
 // 2.变量提升 可以在声明之前调用  function  var import
 // 3.let const  可以 {} 方式来连用 块作用域
-// 4.var 能重复声明 在同一个作用域下
+// 4.var  在同一个作用域下 能重复声明
+
 // let a = 1; // es6 环境下会报错
 // {
-//     console.log(a); // 暂存死区
+//     console.log(a); // 暂存死区(?)  
 //     let a = 2;
 // }
 // console.log(a);
 
-// babel可以将es6 转化到es5
 
-// var a = 1; // es6 环境下会报错
-
+// 把上面的代码转成   babel可以将es6 转化到es5 
+// var a = 1; 
 // {
-//   console.log(_a); // 暂存死区
-
+//   console.log(_a);
 //   var _a = 2;
 // }
 // console.log(a);

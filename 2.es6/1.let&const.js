@@ -9,11 +9,10 @@
 
 // let a = 1; // es6 环境下会报错
 // {
-//     console.log(a); // 暂存死区(?)  
+//     console.log(a); // 暂存死区 a is not defined
 //     let a = 2;
 // }
 // console.log(a);
-
 
 // 把上面的代码转成   babel可以将es6 转化到es5 
 // var a = 1; 
@@ -22,7 +21,6 @@
 //   var _a = 2;
 // }
 // console.log(a);
-
 
 
 for(var i = 0 ; i< 10;i++){
@@ -42,3 +40,10 @@ console.log(a);
 // eslint let 自动帮你转化成const 
 
 // 这个空间不销毁 你不知道的javascript
+
+
+
+// 时间不填写的时候默认为4ms，但是一般不准确，可以去mdn看一下对此的详细说明
+// 链接如下：https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout
+
+// 推荐书目：《你不知道的JS》

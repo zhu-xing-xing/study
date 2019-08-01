@@ -36,33 +36,33 @@ let fs = require('fs').promises;
 // promise 要通过then  generator 可以省略then方法
 function* read() {
     // try{
-        let content = yield fs.readFile('./name.txt','utf8');
-        let age = yield fs.readFile(content,'utf8');
-        let a = yield age + 100;
-        return a;
+    let content = yield fs.readFile('./name.txt', 'utf8');
+    let age = yield fs.readFile(content, 'utf8');
+    let a = yield age + 100;
+    return a;
     // }catch(err){
     //     console.log(err);
     // }
 }
 // co 库
 
-function co(it){
-    return new Promise((resolve,reject)=>{
+function co(it) {
+    return new Promise((resolve, reject) => {
         // 异步迭代 next
-        function next(data){
-           let {value,done} = it.next(data);
-           if(!done){
-               Promise.resolve(value).then(data=>{
-                  next(data)
-               },reject);
-           }else{
+        function next(data) {
+            let { value, done } = it.next(data);
+            if (!done) {
+                Promise.resolve(value).then(data => {
+                    next(data)
+                }, reject);
+            } else {
                 resolve(value);
-           }
+            }
         }
         next();
     });
 }
-co(read()).then(data=>{
+co(read()).then(data => {
     console.log(data);
 });
 
@@ -88,17 +88,17 @@ co(read()).then(data=>{
 // 语法糖
 let fs = require('fs').promises
 async function read() {
-    try{
-        let content = await fs.readFile('./name1.txt','utf8');
-        let age = await fs.readFile(content,'utf8');
+    try {
+        let content = await fs.readFile('./name1.txt', 'utf8');
+        let age = await fs.readFile(content, 'utf8');
         let r = await 100
         return r;
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }
 // async函数返回的是一个promise
-read().then(r=>{
+read().then(r => {
     console.log(r);
 });
 

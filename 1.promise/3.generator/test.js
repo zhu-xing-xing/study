@@ -16,10 +16,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
 }
 
 function _asyncToGenerator(fn) {
-  return function() {
+  return function () {
     var self = this,
       args = arguments;
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
         asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
@@ -74,6 +74,6 @@ function _read() {
   return _read.apply(this, arguments);
 }
 
-read().then(function(data) {
+read().then(function (data) {
   console.log(data);
 });

@@ -55,29 +55,29 @@ let fs = require('fs');
 // finally 的特点 无论如何都执行 ，但是如果返回的是一个promise需要等待这个promise之行完在继续向下执行
 
 // 如何终止promise链？ 返回一个等待的promise
-let promise = new Promise((resolve,reject)=>{
+let promise = new Promise((resolve, reject) => {
     resolve();
 })
-promise.then(function(){
+promise.then(function () {
     // 走到这 后面的then不要在执行了
     console.log(1);
-    return new Promise(()=>{})
-}).then(function(){
+    return new Promise(() => { })
+}).then(function () {
     console.log(2);
 });
 
-new Promise((resolve,reject)=>{
+new Promise((resolve, reject) => {
     reject(100)
-}).finally(()=>{
-    return new Promise((resolve,reject)=>{
+}).finally(() => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('finally')
             //resolve();
         }, 3000);
     });
-}).then(data=>{
-    console.log('data',data)
-},err=>{
-    console.log('err',err);
+}).then(data => {
+    console.log('data', data)
+}, err => {
+    console.log('err', err);
 })
 

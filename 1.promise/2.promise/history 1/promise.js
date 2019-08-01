@@ -4,7 +4,7 @@ const PENDING = 'pending'
 
 class Promise {
   constructor(executor) { // executor 执行器
-    console.log('??executor1', executor) 
+    console.log('??executor1', executor)
     // 初始化promise时传进来的方法
     this.status = PENDING  // 默认是等待态
     this.values = undefined
@@ -22,7 +22,7 @@ class Promise {
       }
     }
     executor(resolve, reject);
-    console.log('??executor2', executor) 
+    console.log('??executor2', executor)
   }
 
   then(onFulfilled, onRejected) {

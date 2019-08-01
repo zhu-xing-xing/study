@@ -2,11 +2,11 @@ const PENDING = "PENDING";
 const SUCCESS = "FULFILLED";
 const FAIL = "REJECTED";
 // 返还的那个新的promise x 是then方法中的返回值 
-function resolvePromise(promise2, x,resolve,reject) { // 考虑的非常全面
-    if(promise2 === x){
-       return reject(new TypeError('TypeError: Chaining cycle detected for promise #<Promise>'));
-    }
-    // 判断x的类型
+function resolvePromise(promise2, x, resolve, reject) { // 考虑的非常全面
+  if (promise2 === x) {
+    return reject(new TypeError('TypeError: Chaining cycle detected for promise #<Promise>'));
+  }
+  // 判断x的类型
 }
 class Promise {
   constructor(executor) {
@@ -69,7 +69,7 @@ class Promise {
         });
       }
       if (this.status === PENDING) {
-        this.onResolvedCallbacks.push(()=>{
+        this.onResolvedCallbacks.push(() => {
           setTimeout(() => {
             try {
               let x = onFulfilled(this.value);
@@ -80,13 +80,13 @@ class Promise {
             }
           });
         });
-        this.onRejectedCallbacks.push(()=> {
+        this.onRejectedCallbacks.push(() => {
           setTimeout(() => {
             try {
               let x = onRejected(this.reason);
               resolvePromise(promise2, x, resolve, reject);
             } catch (err) {
-                console.log(err);
+              console.log(err);
               reject(err);
             }
           });

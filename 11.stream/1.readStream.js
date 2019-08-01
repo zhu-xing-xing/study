@@ -10,7 +10,7 @@ let rs = new ReadStream('./a.txt', {
     autoClose: true, // fs.close
     start: 0,
     //end:4, // 包前又包后
-    highWaterMark: 3  // 每次读取的大小
+    highWaterMark: 3  // 每次读取的大小  默认大小64 * 1024
 }); // 45 67 89 0  7 2 2 2
 // 默认叫非流动模式
 // http

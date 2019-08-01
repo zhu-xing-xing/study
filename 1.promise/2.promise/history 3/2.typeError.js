@@ -1,13 +1,13 @@
 let Promise = require('./promis')
-let promise = new Promise((resolve,reject)=>{
+let promise = new Promise((resolve, reject) => {
     resolve();
 });
-let promise2 = promise.then(()=>{
+let promise2 = promise.then(() => {
     return 100; // resolve
 })
-promise2.then(function(){
+promise2.then(function () {
 
-},function(err){
+}, function (err) {
     console.log(err);
 });
 // TypeError: Chaining cycle detected for promise #<Promise>
@@ -15,6 +15,6 @@ promise2.then(function(){
 setTimeout(() => {
     console.log('settimeout')
 }, 0);
-while(true){
+while (true) {
 
 }

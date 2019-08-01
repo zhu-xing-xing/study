@@ -17,12 +17,12 @@
 let path = require('path');
 // path.join()  path.resolve()  path.dirname()
 // path.extname()  path.basename()
-console.log(path.join(__dirname,'a','b','/'));
+console.log(path.join(__dirname, 'a', 'b', '/'));
 // process.cwd() 有/的时候需要用join
-console.log(path.resolve(__dirname,'a','b','/'));
+console.log(path.resolve(__dirname, 'a', 'b', '/'));
 console.log(path.dirname(__dirname)); // 取父路径
 console.log(path.extname('1.min.js'))
-console.log(path.basename('1.min.js','.js'))
+console.log(path.basename('1.min.js', '.js'))
 
 // 让字符串执行 eval
 // new Function

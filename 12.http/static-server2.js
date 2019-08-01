@@ -1,8 +1,8 @@
 const http = require("http");
 const url = require("url");
 const path = require("path");
-const fs = require("fs").promises;
-const { createReadStream } = require("fs");
+const fs = require("fs").promises; // 注意写法promises
+const { createReadStream } = require("fs"); // 单独取fs的方法
 const mime = require("mime");
 const chalk = require("chalk"); // 可以改变命令行(打印结果)字体颜色
 
@@ -19,7 +19,7 @@ class Server {
   async handleRequest(req, res) {
     let { pathname } = url.parse(req.url);
     let filepath = path.join(this.cwd, pathname);
-    // 使用async和await所有的错误用一个try catch都能捕获到,避免回调嵌套和各种错误处理
+    // 使用async和await所有的错误用一个try...catch都能捕获到,避免回调嵌套和各种错误处理
     try {
       let statObj = await fs.stat(filepath); // fs.stat检查文件是否存在,返回一个statObj对象,可继续进行文件操作
       if (statObj.isDirectory()) {

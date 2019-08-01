@@ -14,6 +14,7 @@ http
         res.statusCode = 404;
         return res.end();
       }
+      
       if (!statObj.isFile()) { // 如果是文件夹 需要找文件夹中的index.html
         absPath = path.join(absPath, "index.html");
         fs.access(absPath, function (err) { // fs.access判断目录文件是否存在

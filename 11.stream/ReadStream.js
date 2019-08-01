@@ -12,7 +12,7 @@ class ReadStream extends EventEmitter {
     this.autoClose = options.autoClose || true;
     this.start = options.start || 0;
     this.end = options.end || undefined;
-    this.highWaterMark = options.highWaterMark || 64 * 1024;
+    this.highWaterMark = options.highWaterMark || 64 * 1024; // 默认大小64 * 1024
 
     this.flowing = null; // 非流动模式  flowing来表明是否读取
     this.close = false;

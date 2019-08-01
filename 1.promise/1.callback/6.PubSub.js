@@ -1,6 +1,7 @@
 let fs = require('fs'); // fileSystem
 // 希望两次都完成 后 分别打印最终结果 再打印一次已经处理完毕
 // 发布 emit 订阅 on  一种一对多的关系 [fn,fn,fn]， 一个emit对应多个on
+
 class Events {
     constructor() { this.stack = []; }
     on(callback) { this.stack.push(callback); }

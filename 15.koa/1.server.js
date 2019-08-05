@@ -11,7 +11,7 @@ const Koa = require('./koa/application')
 // app.use app.listen app.on('error')
 const app = new Koa(); // 创建一个app实例
 // 如果没有执行任何逻辑返回404
-app.use(ctx=>{ // 在koa源码中需要创建一个ctx对象 内部封装req和res
+app.use(ctx => { // 在koa源码中需要创建一个ctx对象 内部封装req和res
     console.log(ctx.req.path); // 原生node中req的请求对象
     console.log(ctx.request.req.path);
     // ----
@@ -21,7 +21,7 @@ app.use(ctx=>{ // 在koa源码中需要创建一个ctx对象 内部封装req和r
     ctx.response.body = 'hello'; // res.end()
     ctx.body = '111'; // 这个方法只是给ctx.body赋予值
 })
-app.listen(3000,()=>{
+app.listen(3000, () => {
     console.log('server start 3000');
 }); // 创建一个http服务
 

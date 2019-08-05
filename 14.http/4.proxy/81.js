@@ -3,14 +3,14 @@ const http = require('http');
 const proxy = require('http-proxy').createProxy();
 // http-proxy http.request
 let map = {
-    'a.zhufeng.cn:81':'http://localhost:3000',
-    'b.zhufeng.cn:81':'http://localhost:4000'
+    'a.zhufeng.cn:81': 'http://localhost:3000',
+    'b.zhufeng.cn:81': 'http://localhost:4000'
 }
 // a.zhufeng b.zhufeng
-http.createServer((req,res)=>{
+http.createServer((req, res) => {
     console.log(req.headers.host); // a.zhufeng.cn
-    proxy.web(req,res,{
-        target:map[req.headers.host]
+    proxy.web(req, res, {
+        target: map[req.headers.host]
     })
 }).listen(81);
 

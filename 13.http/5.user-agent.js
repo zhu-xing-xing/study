@@ -1,14 +1,15 @@
 const http = require('http');
 
-http.createServer((req,res)=>{
+// 区分设备 req.headers['user-agent']
+http.createServer((req, res) => {
     let agent = req.headers['user-agent'];
-    if(agent.match('iPhone')){
+    if (agent.match('iPhone')) {
         res.statusCode = 302;
-        res.setHeader('Location','http://www.baidu.com')
+        res.setHeader('Location', 'http://www.baidu.com')
         res.end(); // 阻止当前页面 redirect
-    }else{
+    } else {
         res.statusCode = 302;
-        res.setHeader('Location','http://www.qq.com')
+        res.setHeader('Location', 'http://www.qq.com')
         res.end(); // 阻止当前页面 redirect
     }
 }).listen(5000);

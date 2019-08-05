@@ -5,7 +5,9 @@ const fs = require('fs');
 app.use(async ctx => {
     ctx.body = fs.createReadStream('./package.json')
 })
+
 app.on('error', (err) => {
     console.log(err, '----')
 })
+
 app.listen(3000);

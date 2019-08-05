@@ -1,11 +1,12 @@
 const Koa = require("koa");
 const app = new Koa();
 const fs = require('fs').promises;
-// const static = require('koa-static');
 const path = require('path');
+// const static = require('koa-static'); // 通过一个文件目录,找到一个文件,并显示其内容
+
+// 仿写一个koa-static中间件
 const static = (dirname) => {
-  // 中间件 必须返还一个async 函数
-  return async (ctx, next) => {
+  return async (ctx, next) => { // 中间件 必须返还一个async 函数
     try {
       let filePath = ctx.path;
       filePath = path.join(dirname, filePath);
@@ -13,21 +14,20 @@ const static = (dirname) => {
       if (statObj.isDirectory()) {
         filePath = path.join(filePath, 'index.html');
       }
-      ctx.body = await fs.readFile(filePath, 'utf8');
+      ctx.body = await fs.readFile(filePath, 'utf8'); // 如果找到了,直接把文件内容返回,不需要继续执行了
       // 这里不需要在调用next方法
     } catch (e) {
-      return next(); // 自己无法处理 继续交给下一个人处理
+      return next(); // 自己无法处理(找不到) 继续交给下一个use处理
     }
   }
 }
+
 app.use(static(__dirname))
 app.use(static(path.resolve(__dirname, '../11.stream')));
 
+app.listen(3000);
+
 // 中间件 ： reduce + promise / async+await  compose函数
 // 自己写一篇文章
-
-
-
-app.listen(3000);
 
 

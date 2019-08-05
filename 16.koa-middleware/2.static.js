@@ -2,13 +2,13 @@ const Koa = require("koa");
 const app = new Koa();
 const fs = require('fs').promises;
 const path = require('path');
-// const static = require('koa-static'); // 通过一个文件目录,找到一个文件,并显示其内容
+// const static = require('koa-static'); // ??? 通过一个文件目录,找到一个文件并显示其内容
 
 // 仿写一个koa-static中间件
 const static = (dirname) => {
   return async (ctx, next) => { // 中间件 必须返还一个async 函数
     try {
-      let filePath = ctx.path;
+      let filePath = ctx.path; // ??? 获取的是什么目录?
       filePath = path.join(dirname, filePath);
       let statObj = await fs.stat(filePath);
       if (statObj.isDirectory()) {
@@ -22,7 +22,7 @@ const static = (dirname) => {
   }
 }
 
-app.use(static(__dirname))
+app.use(static(__dirname));
 app.use(static(path.resolve(__dirname, '../11.stream')));
 
 app.listen(3000);

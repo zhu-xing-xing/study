@@ -1,12 +1,14 @@
 const Koa = require("koa");
-// const bodyParser = require("koa-bodyparser"); // 它不支持文件上传
+// const bodyParser = require("koa-bodyparser"); // 它不支持文件上传 ???
 const app = new Koa();
+
 // 中间件
 // 1) 中间执行的逻辑
 // 2) 可以在我们的ctx上扩展一些属性或者方法
 // 3) 决定是否向下执行 权限
 
-const bodyParser = () => { // 自定义中间件的写法 就是返还一个async函数 如果需要向下执行就调用next
+// 自定义中间件的写法 就是返还一个async函数 如果需要向下执行就调用next
+const bodyParser = () => { 
   return async (ctx, next) => {
     await new Promise((resolve, reject) => {
       let arr = [];

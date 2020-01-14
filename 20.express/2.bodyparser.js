@@ -1,6 +1,7 @@
 const express = require("express");
 // const bodyparser = require("body-parser");
 const app = express();
+
 let bodyparser = {
   json() {
     console.log("json");
@@ -40,8 +41,8 @@ let bodyparser = {
   }
 };
 // multer
-app.use(bodyparser.json()); // {a:1,b:2} a=1&b=2
-app.use(bodyparser.urlencoded()); // {a:1,b:2} a=1&b=2
+app.use(bodyparser.json()); // {a:1,b:2} => a=1&b=2
+app.use(bodyparser.urlencoded()); // {a:1,b:2} => a=1&b=2
 app.post("/login", (req, res) => {
   console.log(req.body);
 });
